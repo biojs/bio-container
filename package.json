@@ -1,9 +1,10 @@
 {
   "name": "bio-container",
+  "main": "main",
   "jspm": {
     "directories": {},
     "dependencies": {
-      "bio-element": "github:biojs/bio-element@0.0.1"
+      "bio-element": "github:biojs/bio-element@0.0.2"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
