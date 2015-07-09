@@ -1,0 +1,9 @@
+/*
+should only show in element
+*/
+.hello {
+  font-size: 2.2rem;
+  background: orange;
+  color: white;
+  padding: 0.2rem;
+}
