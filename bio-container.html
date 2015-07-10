@@ -1,15 +1,20 @@
 <dom-module id="bio-container">
   <link rel="import" type="css" href="bio-container.css">
-	<template>
-		<div id="container">
-      A
-      <div class="hello">{{text}}</div>
+  <template>
+    <div id="container">
+      <p>
+        An <span class="hello">{{text}}</span> from
+        <content></content>
+      </p>
 
-	  <bio-element>
-		which includes bio-element
-	  </bio-element>
+      <bio-element>
+        bio-element #1
+      </bio-element>
 
-      <content></content>
-  </div>
-	</template>
+      <bio-element>
+        bio-element #2
+      </bio-element>
+
+    </div>
+  </template>
 </dom-module>

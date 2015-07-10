@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Polymer and ES6 Modules</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      font-size: 1.2em;
+      color: steelblue;
+    }
+
+    div {
+      background: lightgrey;
+      padding: 0.2em;
+    }
+
+    .hello {
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hello">Loading a web component with SystemJS</div>
+  <bio-container>bio-container</bio-container>
+
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
+  <script>
+    /**
+     * Conditionally loads webcomponents polyfill if needed.
+     * Credit: Glen Maddern (geelen) & Paul Lewis (paullewis)
+     */
+    var webComponentsSupported = ('registerElement' in document && 'import' in document.createElement('link') && 'content' in document.createElement('template'));
+
+    if (!webComponentsSupported) {
+      System.import('webcomponentsjs-lite').then(function() {
+        loadElements();
+      });
+    } else {
+      loadElements();
+    }
+
+    function loadElements() {
+      // Use Shadow DOM if available
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+
+      // Import elements
+      System.import('./bio-container');
+    }
+  </script>
+
+</body>
+
+</html>
