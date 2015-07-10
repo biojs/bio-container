@@ -4,7 +4,10 @@
   "jspm": {
     "directories": {},
     "dependencies": {
-      "bio-element": "github:biojs/bio-element@0.0.2"
+      "bio-element": "github:herkulano/bio-element@0.0.5",
+      "html": "github:Hypercubed/systemjs-plugin-html@master",
+      "polymer": "github:greenify/polymer-js@^1.0.5",
+      "webcomponentsjs-lite": "github:webcomponents/webcomponentsjs@0.7.2"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",

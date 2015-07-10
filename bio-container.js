@@ -1,6 +1,3 @@
-var _ = require('lodash');
-var Polymer  = require('polymer');
-
 var BioContainer = Polymer({
 
   is: 'bio-container',
@@ -11,7 +8,7 @@ var BioContainer = Polymer({
       value: 'Hello'
     }
   },
-  
+
   created: function() {
     console.log('bio-container created');
   }
