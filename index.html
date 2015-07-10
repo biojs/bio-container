@@ -2,33 +2,57 @@
 <html>
 
 <head>
-    <title>Polymer and ES6 Modules</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            font-size: 1.2em;
-            color: steelblue;
-        }
-        div {
-            background: lightgrey;
-            padding: 0.2em;
-        }
-        .hello {
-            color: #444;
-        }
-    </style>
+  <title>Polymer and ES6 Modules</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      font-size: 1.2em;
+      color: steelblue;
+    }
+
+    div {
+      background: lightgrey;
+      padding: 0.2em;
+    }
+
+    .hello {
+      color: #444;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="hello">Loading a web component with SystemJS</div>
-    <bio-container>bio-container</bio-container>
+  <div class="hello">Loading a web component with SystemJS</div>
+  <bio-container>bio-container</bio-container>
 
-    <script src="jspm_packages/system.js"></script>
-    <script src="config.js"></script>
-    <script>
-      // removed WebComponents support check for clarity
-    	System.import('main');
-    </script>
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
+  <script>
+    /**
+     * Conditionally loads webcomponents polyfill if needed.
+     * Credit: Glen Maddern (geelen on GitHub)
+     */
+    var webComponentsSupported = ('registerElement' in document
+      && 'import' in document.createElement('link')
+      && 'content' in document.createElement('template'));
+
+    if (!webComponentsSupported) {
+      System.import('webcomponentsjs-lite').then(function() {
+        lazyLoadPolymerAndElements();
+      });
+    } else {
+      lazyLoadPolymerAndElements();
+    }
+
+    function lazyLoadPolymerAndElements () {
+      // Use Shadow DOM if available
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+
+      // Import elements
+      System.import('./bio-container');
+    }
+  </script>
 
 </body>
 
